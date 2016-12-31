@@ -13,4 +13,7 @@ hdfs dfs -moveFromLocal yelp_academic_dataset_checkin.json /user/cloudera/hacker
 hdfs dfs -moveFromLocal yelp_academic_dataset_tip.json /user/cloudera/hackerday/yelp/tips
 hdfs dfs -moveFromLocal yelp_academic_dataset_user.json /user/cloudera/hackerday/yelp/users
 
-# hdfs dfs -moveFromLocal yelp_academic_dataset_photo.json /user/cloudera/hackerday/yelp/photos
+hdfs dfs -moveFromLocal 2016_yelp_dataset_challenge_photos/photo_id_to_business_id.json /user/cloudera/hackerday/yelp/photos
+
+
+hdfs dfs -mkdir -p /user/cloudera/hackerday/yelp/transformed/business

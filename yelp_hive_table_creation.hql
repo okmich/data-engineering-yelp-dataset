@@ -55,3 +55,30 @@ CREATE EXTERNAL TABLE user (
 ROW FORMAT SERDE 'org.apache.hive.hcatalog.data.JsonSerDe'
 STORED AS TEXTFILE
 LOCATION '/user/cloudera/hackerday/yelp/users';
+
+CREATE EXTERNAL TABLE photo (
+	photo_id string,
+	business_id string,
+	caption string,
+	label string
+)
+ROW FORMAT DELIMITED
+LOCATION '/user/cloudera/hackerday/yelp/processed/photos';
+
+
+CREATE EXTERNAL TABLE business (
+	business_id string,
+	full_address string,
+	open boolean,
+	categories array<string>,
+	city string,
+	review_count int,
+	name string,
+	neighborhoods array<string>,
+	longitude float,
+	state string,
+	stars float,
+	latitude float
+)
+STORED AS parquet
+LOCATION '/user/cloudera/hackerday/yelp/transformed/business';
