@@ -1,0 +1,19 @@
+# create the hdfs directory
+hdfs dfs -mkdir -p /user/cloudera/hackerday/yelp/businesses
+hdfs dfs -mkdir -p /user/cloudera/hackerday/yelp/reviews
+hdfs dfs -mkdir -p /user/cloudera/hackerday/yelp/checkins
+hdfs dfs -mkdir -p /user/cloudera/hackerday/yelp/tips
+hdfs dfs -mkdir -p /user/cloudera/hackerday/yelp/users
+hdfs dfs -mkdir -p /user/cloudera/hackerday/yelp/photos
+
+# move the file to hdfs
+hdfs dfs -moveFromLocal yelp_academic_dataset_business.json /user/cloudera/hackerday/yelp/businesses
+hdfs dfs -moveFromLocal yelp_academic_dataset_review.json /user/cloudera/hackerday/yelp/reviews
+hdfs dfs -moveFromLocal yelp_academic_dataset_checkin.json /user/cloudera/hackerday/yelp/checkins
+hdfs dfs -moveFromLocal yelp_academic_dataset_tip.json /user/cloudera/hackerday/yelp/tips
+hdfs dfs -moveFromLocal yelp_academic_dataset_user.json /user/cloudera/hackerday/yelp/users
+
+hdfs dfs -moveFromLocal 2016_yelp_dataset_challenge_photos/photo_id_to_business_id.json /user/cloudera/hackerday/yelp/photos
+
+
+hdfs dfs -mkdir -p /user/cloudera/hackerday/yelp/transformed/business
