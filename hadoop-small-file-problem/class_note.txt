@@ -1,0 +1,26 @@
+Solving the Hadoop small file problem
+======================================
+
+1. What is Small file problem in Hadoop
+2. How it arises (Batch and Streaming mode)
+	i. Streaming
+	ii Batch
+		- Sqoop
+		- CLI
+		- DistCp
+3. Solution (Streaming): Using flume
+
+4. Solution (Streaming): Preprocessing and storing in a NoSQL database (Hbase)
+
+5. Solution (Batch): Merging before storing in HDFS
+
+6. Solution (Batch): Sequencefile
+
+7. Solution (Batch): Compression
+
+8. Solution (Batch): CombineFileInputFormat
+
+
+
+Definition:
+Batch system processes the data at a later time than it was ingested into the enterprise whereas streaming systems processes the data as it is acquired
