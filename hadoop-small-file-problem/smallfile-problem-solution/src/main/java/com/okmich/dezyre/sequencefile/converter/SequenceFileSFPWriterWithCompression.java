@@ -21,7 +21,7 @@ import org.apache.hadoop.io.SequenceFile.CompressionType;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.compress.DefaultCodec;
 
-public class SequenceFileSFPWriter {
+public class SequenceFileSFPWriterWithCompression {
 
 	public static void main(String[] args) throws Exception {
 		String folder = "/home/cloudera/Downloads/t-drive-trajectory-data-sample/zips/test";
@@ -56,7 +56,8 @@ public class SequenceFileSFPWriter {
 			Path seqFilePath = new Path(fName);
 
 			writer = SequenceFile.createWriter(conf, keyClass(Text.class),
-					valueClass(BytesWritable.class), file(seqFilePath));
+					valueClass(BytesWritable.class), file(seqFilePath),
+					compression(CompressionType.BLOCK, new DefaultCodec()));
 			// write to the sequence file
 			for (String fileName : docMap.keySet())
 				writer.append(new Text(fileName),

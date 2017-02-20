@@ -9,16 +9,17 @@ Solving the Hadoop small file problem
 		- CLI
 		- DistCp
 3. Solution (Streaming): Using flume
-
+	See the architectural diagram in using_flume_and_kafka_architectural overview.docx and the flume agent hdp_sfp_flume_hdfs_kafka_agent.properties
 4. Solution (Streaming): Preprocessing and storing in a NoSQL database (Hbase)
-
+	See the architectural overview from sing_flume_and_kafka_nosql_architectural overview.docx
 5. Solution (Batch): Merging before storing in HDFS
-
+	See the FileCombiner.java class in the smallfile-problem-solution project	
 6. Solution (Batch): Sequencefile
-
+	See the SequenceFileSFPWriter.java and SequenceFileSFPReader.java classes in the smallfile-problem-solution project
 7. Solution (Batch): Compression
-
+	See the SequenceFileSFPWriterWithCompression.java class in the smallfile-problem-solution project
 8. Solution (Batch): CombineFileInputFormat
+	See the SmallFileReadJob.java map reduce application that uses CombineFileInputFormat in the combined-small-files-mapreduce-job project
 
 
 
