@@ -1,0 +1,36 @@
+Agenda
+==========================================
+Doing data processing using Spark (Tips) - read the data and transforming to a hive parquets
+		ingesting json using spark-sql
+	saving to hdfs
+
+
+Various ways of integrating Hive and Spark (Reviews)
+	saveAsTable
+	insertInto
+	saveAs a file and build a hive table on the output
+
+
+Normalizing and denormalizing dataset into hive tables  (User)
+	initial import
+		
+	subsequent import
+		joins
+
+Various complex data structures in Hive through spark (User and Businesses)
+	Nested data structures 
+		denormalization
+
+
+Exporting some of the processed datasets to RDBMS (User)
+	Exporting the business
+
+
+Packaging as the executable using sbt and spark-submit (Tips & Reviews)
+
+
+
+Looking forward
+========================
+	- Handling sparse attributes (Businesses)
+	- Network analysis and business insights (Users, Reviews and Businesses)
