@@ -2,6 +2,8 @@
 // transform it
 // store it to hdfs 
 val tipDF = sqlContext.jsonFile("/user/cloudera/rawdata/yelp/tips")
+//get number of partition
+tipDF.partitions
 val refinedTipDF = tipDF.select("user_id","business_id","likes","text","date").repartition(1)
 refinedTipDF.write.parquet("/user/cloudera/output/yelp/tips")
 //we build the hive tip table on top of this output to allow users query our data
@@ -16,11 +18,11 @@ import org.apache.spark.sql.hive.HiveContext
 val hiveCtx = new HiveContext(sc)
 import hiveCtx.implicits._
 
-
+hiveCtx.sql("use yelp")
 val tipDF = hiveCtx.read.table("tip")
 //create a managed table in hive's yelp database
 hiveCtx.sql("use yelp")
-tipDF.write.saveAsTable("tip2_spark")
+tipDF.write.saveAsTable("tip2_from_spark")
 
 
 
@@ -51,8 +53,8 @@ userfriendDF.write.insertInto("user_friends")
 
 
 val userMainDF = userDF.select("user_id","name","review_count","yelping_since","votes.useful","votes.funny","votes.cool","fans","elite","average_stars","compliments.hot",  "compliments.more", "compliments.profile", "compliments.cute", "compliments.list", "compliments.note", "compliments.plain", "compliments.cool", "compliments.funny", "compliments.writer", "compliments.photos")
-
- userMainDF.write.insertInto("user")
+//importance of coalesce
+userMainDF.coalesce(1).write.insertInto("user")
  
 //  select u.user_id, u.fans, g.num from user u join 
 // (select user_id, count(1) num from user_friends group by user_id) g
@@ -71,6 +73,8 @@ val newDataset = allDF.
 //businesses
 val bizDF = hiveCtx.jsonFile("/user/cloudera/rawdata/yelp/businesses")
 
+bizDF.cache
+
 //to get the complex schema
 val schema = bizDF.schema.prettyJson
 
@@ -81,12 +85,12 @@ val schema = bizDF.schema.prettyJson
 // val path = Paths.get(new java.net.URI("file:///home/cloudera/classes/businesses_schema.json"))
 // Files.write(path, schema.getBytes, StandardOpenOption.CREATE_NEW)
 
-bizDF.select("business_id","categories","city","full_address","latitude","longitude","name","neighborhoods","open","review_count","stars","state")
+val businessDF = bizDF.select("business_id","categories","city","full_address","latitude","longitude","name","neighborhoods","open","review_count","stars","state")
 
 val catRdd = bizDF.select("categories").rdd.flatMap(row => row.getAs[scala.collection.mutable.WrappedArray[String]](0).toSeq).
     distinct.
     sortBy(i => i).
-    coalesce(1).
+    coalesce(1).  //change the rdd to a partition of n
     mapPartitions(itr => {
         var index = 0
         itr map (i => {
@@ -97,12 +101,59 @@ val catRdd = bizDF.select("categories").rdd.flatMap(row => row.getAs[scala.colle
 
 catRdd.toDF.write.insertInto("categories")
 
+val catDF = hiveCtx.read.table("categories")
 
-val bizCatRDD = bizDF.select("business_id","categories").flatMap(parseRow(_))
 
 
 //creating the many-to-many business_category
-//create businesses
+//create a map of category to id (NightLife -> 10)
+val catMap = catDF.rdd.map((row: Row) => (row.getAs[String](1)->row.getAs[Integer](0))).collect.toMap
+//(XXXXXXXXXX, NightLife)
+val bizCatRDD = bizDF.select("business_id","categories").flatMap(parseRow(_))
+//(XXXXXXXXXX, 10)
+val bizCat = bizCatRDD.map(t => (t._1, catMap(t._2))).toDF
 
+//insert into business_category table
+bizCat.toDF.coalesce(1).write.insertInto("business_category")
+
+//create businesses
+businessDF.coalesce(1).write.insertInto("business")
+
+//creating the many-to-many business_hours
+val bizHoursDF =  bizDF.select("business_id", "hours.Sunday","hours.Monday","hours.Tuesday","hours.Wednesday","hours.Thursday","hours.Friday","hours.Saturday")
+
+bizHoursDF.coalesce(1).write.insertInto("business_hour")
 //make decisions on business_attributes
 
+import org.apache.spark.sql.functions._
+
+val dayOfWeek = udf[String,Int]((day:Int) => {
+    day match {
+        case 1 => "Sunday"
+        case 2 => "Monday"
+        case 3 => "Tuesday"
+        case 4 => "Wednesday"
+        case 5 => "Thursday"
+        case 6 => "Friday"
+        case 7 => "Saturday"
+        case _ => "Unknown"
+    }
+})
+
+val monthName = udf[String,Int]((month:Int) => {
+    month match {
+        case 1 => "January"
+        case 2 => "Febuary"
+        case 3 => "March"
+        case 4 => "April"
+        case 5 => "May"
+        case 6 => "June"
+        case 7 => "July"
+        case 8 => "August"
+        case 9 => "September"
+        case 10 => "October"
+        case 11 => "November"
+        case 12 => "December"
+        case _ => "Unknown"
+    }
+})

@@ -13,19 +13,23 @@ Various ways of integrating Hive and Spark (Reviews)
 
 Normalizing and denormalizing dataset into hive tables  (User)
 
-
 initial import subsequent import
 		When you always get a complete snapshot from source
-			drop and reload
-			insert overwrite
+			Without partition
+				drop and reload
+				insert overwrite
+			With partition
+				union with existing dataset, 
 		When you get a delta or incremental dataset
-			merge/joins
-				full outer join
-				Unionall and map/reduce
+			process normally and append to table
 
 Various complex data structures in Hive through spark (User and Businesses)
 	Nested data structures 
 		denormalization
+
+Time
+	As a dimension
+	For partitioning
 
 
 Exporting some of the processed datasets to RDBMS (User)
@@ -38,5 +42,5 @@ Packaging as the executable using sbt and spark-submit (Tips & Reviews)
 
 Looking forward
 ========================
-	- Handling sparse attributes (Businesses)
+	- Handling sparse attributes (Businesses) - Hive|HBase|Phoenix
 	- Network analysis and business insights (Users, Reviews and Businesses)
