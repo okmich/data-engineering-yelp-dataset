@@ -71,9 +71,7 @@ val newDataset = allDF.
 
 
 //businesses
-val bizDF = hiveCtx.jsonFile("/user/cloudera/rawdata/yelp/businesses")
-
-bizDF.cache
+val bizDF = hiveCtx.jsonFile("/user/cloudera/rawdata/yelp/businesses").cache
 
 //to get the complex schema
 val schema = bizDF.schema.prettyJson
@@ -127,33 +125,15 @@ bizHoursDF.coalesce(1).write.insertInto("business_hour")
 
 import org.apache.spark.sql.functions._
 
-val dayOfWeek = udf[String,Int]((day:Int) => {
-    day match {
-        case 1 => "Sunday"
-        case 2 => "Monday"
-        case 3 => "Tuesday"
-        case 4 => "Wednesday"
-        case 5 => "Thursday"
-        case 6 => "Friday"
-        case 7 => "Saturday"
-        case _ => "Unknown"
-    }
-})
 
-val monthName = udf[String,Int]((month:Int) => {
-    month match {
-        case 1 => "January"
-        case 2 => "Febuary"
-        case 3 => "March"
-        case 4 => "April"
-        case 5 => "May"
-        case 6 => "June"
-        case 7 => "July"
-        case 8 => "August"
-        case 9 => "September"
-        case 10 => "October"
-        case 11 => "November"
-        case 12 => "December"
-        case _ => "Unknown"
-    }
-})
+val reviewDF = hiveCtx.jsonFile("/user/cloudera/rawdata/yelp/reviews")
+val revReviewDF = reviewDF.select($"review_id",$"user_id",$"business_id",$"stars",$"text",$"date",$"votes.cool",$"votes.funny",$"votes.useful", substring($"date", 1, 4).cast("int").as("year"), substring($"date", 6, 2).cast("int").as("month"),  substring($"date", 9, 2).cast("int").as("day"), monthName(substring(reviewDF("date"), 6, 2)).as("monthname"), dayOfWeek(reviewDF("date")).as("dayofweek"), weekofyear(substring(reviewDF("date"), 1, 4)).as("weekofyear"))
+
+revReviewDF.coalesce(5).write.insertInto("yelp.review")
+
+
+
+val tipDF = hiveCtx.jsonFile("/user/cloudera/rawdata/yelp/tips")
+val refinedTipDF = tipDF.select($"user_id",$"business_id",$"likes",$"text",$"date", substring($"date", 1, 4).cast("int").as("year"), substring($"date", 6, 2).cast("int").as("month"),  substring($"date", 9, 2).cast("int").as("day"), monthName(substring($"date", 6, 2)).as("monthname"), dayOfWeek($"date").as("dayofweek"), weekofyear(substring($"date", 1, 4)).as("weekofyear")).coalesce(1)
+
+refinedTipDF.write.insertInto("tip")

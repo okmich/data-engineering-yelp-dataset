@@ -158,3 +158,22 @@ create external table review (
 )
 stored as parquet
 location  '/user/cloudera/output/yelp/reviews';
+
+drop table tip;
+--remember to delete the /user/cloudera/output/yelp/tips hdfs directory
+create external table tip (
+    user_id string,
+    business_id string,
+    likes bigint,
+    text string,
+    `date` string,
+    `year` int,
+    `month` int,
+    `day` int,
+    month_name string,
+    dayofweek string,
+    weekofyear int
+)
+stored as parquet
+location '/user/cloudera/output/yelp/tips';
+
