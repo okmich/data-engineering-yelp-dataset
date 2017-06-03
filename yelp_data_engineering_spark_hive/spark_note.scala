@@ -46,8 +46,9 @@ def parseRow(row: Row) : Seq[(String, String)] ={
 	fList.map(s => (user_Id, s))
 }
 
+val userFriendRDD = friends.flatMap(parseRow(_))
 
-val userfriendDF = friends.flatMap(parseRow(_)).toDF
+val userfriendDF = userFriendRDD.toDF
 //write into database table
 userfriendDF.write.insertInto("user_friends")
 
