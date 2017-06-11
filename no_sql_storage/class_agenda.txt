@@ -1,0 +1,8 @@
+Data Engineering on Yelp Dataset - NoSQL Storage
+==============================================
+- Why store data in a NoSQL database
+- Revisiting NoSQL databases concepts
+- Storing sparse business attributes in HBase
+- Storing sparse business attributes in MongoDB
+- Integrating Hive and NoSQL databases for data retrieval using query
+- Integrating Spark and NoSQL databases for retrieving data for processing

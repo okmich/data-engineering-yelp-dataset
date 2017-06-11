@@ -1,0 +1,82 @@
+spark-shell --conf "spark.mongodb.input.uri=mongodb://192.168.189.1/school.students?readPreference=primaryPreferred" \
+          --conf "spark.mongodb.output.uri=mongodb://192.168.189.1/school.students" \
+          --packages org.mongodb.spark:mongo-spark-connector_2.10:1.1.0,com.googlecode.json-simple:json-simple:1.1.1
+
+
+import com.mongodb.spark._
+import com.mongodb.spark.config._
+import scala.collection.JavaConverters._
+
+
+val rdd = MongoSpark.load(sc)
+spark-shell --conf "spark.mongodb.output.uri=mongodb://192.168.189.1/hackerday.attributes" \
+          --packages org.mongodb.spark:mongo-spark-connector_2.10:1.1.0,com.googlecode.json-simple:json-simple:1.1.1
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+import scala.collection.JavaConverters._
+
+val businessRDD = sc.textFile("/user/cloudera/rawdata/yelp/businesses")
+
+
+val parser = new JSONParser();
+val obj = (parser.parse(businessRDD.first)).asInstanceOf[JSONObject]
+val attJson = obj.get("attributes").asInstanceOf[JSONObject]
+val businessId = obj.get("business_id").asInstanceOf[String]
+
+def conformKeys(attJson : JSONObject) : Map[String, Object] = {
+	val attJsonMap = attJson.asInstanceOf[java.util.HashMap[String,Object]].asScala
+	val conformed=attJsonMap map (t => {
+		val value = t._2 match {
+			case _ : JSONObject => conformKeys(t._2.asInstanceOf[JSONObject])
+			case _ => t._2
+		}
+		(t._1.replace(" ", "_").toLowerCase, value)
+	})
+	conformed.toMap
+}
+
+val attributeMap = conformKeys(attJson)
+
+import com.mongodb.spark._
+import com.mongodb.spark.config._
+
+import org.bson.Document
+
+val doc = new Document("_id", businessId)
+
+def populateDoc(attJson : JSONObject, doc: Document) : Unit = {
+	val attJsonMap = attJson.asInstanceOf[java.util.HashMap[String,Object]].asScala
+	val conformed=attJsonMap map (t => {
+		val value = t._2 match {
+			case _ : JSONObject => {
+				var childDoc = new Document()
+				populateDoc(t._2.asInstanceOf[JSONObject], childDoc)
+				childDoc
+			}
+			case _ => t._2
+		}
+		doc.put(t._1, value)
+	})
+}
+
+
+def populateDoc(jsonMap : Map, doc: Document) : Unit = {
+	val conformed = jsonMap map (t => {
+		val value = t._2 match {
+			case _ : Map => {
+				var childDoc = new Document()
+				populateDoc(t._2, childDoc)
+				childDoc
+			}
+			case _ => t._2
+		}
+		doc.put(t._1, value)
+	})
+}
+
+
+MongoSpark.save(rdd)
+

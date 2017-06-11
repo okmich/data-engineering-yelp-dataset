@@ -1,0 +1,622 @@
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "attributes",
+    "type" : {
+      "type" : "struct",
+      "fields" : [ {
+        "name" : "Accepts Credit Cards",
+        "type" : "boolean",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Accepts Insurance",
+        "type" : "boolean",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Ages Allowed",
+        "type" : "string",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Alcohol",
+        "type" : "string",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Ambience",
+        "type" : {
+          "type" : "struct",
+          "fields" : [ {
+            "name" : "casual",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "classy",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "divey",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "hipster",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "intimate",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "romantic",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "touristy",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "trendy",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "upscale",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          } ]
+        },
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Attire",
+        "type" : "string",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "BYOB",
+        "type" : "boolean",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "BYOB/Corkage",
+        "type" : "string",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "By Appointment Only",
+        "type" : "boolean",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Caters",
+        "type" : "boolean",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Coat Check",
+        "type" : "boolean",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Corkage",
+        "type" : "boolean",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Delivery",
+        "type" : "boolean",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Dietary Restrictions",
+        "type" : {
+          "type" : "struct",
+          "fields" : [ {
+            "name" : "dairy-free",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "gluten-free",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "halal",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "kosher",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "soy-free",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "vegan",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "vegetarian",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          } ]
+        },
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Dogs Allowed",
+        "type" : "boolean",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Drive-Thru",
+        "type" : "boolean",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Good For",
+        "type" : {
+          "type" : "struct",
+          "fields" : [ {
+            "name" : "breakfast",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "brunch",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "dessert",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "dinner",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "latenight",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "lunch",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          } ]
+        },
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Good For Dancing",
+        "type" : "boolean",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Good For Groups",
+        "type" : "boolean",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Good for Kids",
+        "type" : "boolean",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Hair Types Specialized In",
+        "type" : {
+          "type" : "struct",
+          "fields" : [ {
+            "name" : "africanamerican",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "asian",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "coloring",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "curly",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "extensions",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "kids",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "perms",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "straightperms",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          } ]
+        },
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Happy Hour",
+        "type" : "boolean",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Has TV",
+        "type" : "boolean",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Music",
+        "type" : {
+          "type" : "struct",
+          "fields" : [ {
+            "name" : "background_music",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "dj",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "jukebox",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "karaoke",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "live",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "video",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          } ]
+        },
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Noise Level",
+        "type" : "string",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Open 24 Hours",
+        "type" : "boolean",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Order at Counter",
+        "type" : "boolean",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Outdoor Seating",
+        "type" : "boolean",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Parking",
+        "type" : {
+          "type" : "struct",
+          "fields" : [ {
+            "name" : "garage",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "lot",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "street",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "valet",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "validated",
+            "type" : "boolean",
+            "nullable" : true,
+            "metadata" : { }
+          } ]
+        },
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Price Range",
+        "type" : "long",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Smoking",
+        "type" : "string",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Take-out",
+        "type" : "boolean",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Takes Reservations",
+        "type" : "boolean",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Waiter Service",
+        "type" : "boolean",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Wheelchair Accessible",
+        "type" : "boolean",
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Wi-Fi",
+        "type" : "string",
+        "nullable" : true,
+        "metadata" : { }
+      } ]
+    },
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "business_id",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "categories",
+    "type" : {
+      "type" : "array",
+      "elementType" : "string",
+      "containsNull" : true
+    },
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "city",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "full_address",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "hours",
+    "type" : {
+      "type" : "struct",
+      "fields" : [ {
+        "name" : "Friday",
+        "type" : {
+          "type" : "struct",
+          "fields" : [ {
+            "name" : "close",
+            "type" : "string",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "open",
+            "type" : "string",
+            "nullable" : true,
+            "metadata" : { }
+          } ]
+        },
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Monday",
+        "type" : {
+          "type" : "struct",
+          "fields" : [ {
+            "name" : "close",
+            "type" : "string",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "open",
+            "type" : "string",
+            "nullable" : true,
+            "metadata" : { }
+          } ]
+        },
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Saturday",
+        "type" : {
+          "type" : "struct",
+          "fields" : [ {
+            "name" : "close",
+            "type" : "string",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "open",
+            "type" : "string",
+            "nullable" : true,
+            "metadata" : { }
+          } ]
+        },
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Sunday",
+        "type" : {
+          "type" : "struct",
+          "fields" : [ {
+            "name" : "close",
+            "type" : "string",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "open",
+            "type" : "string",
+            "nullable" : true,
+            "metadata" : { }
+          } ]
+        },
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Thursday",
+        "type" : {
+          "type" : "struct",
+          "fields" : [ {
+            "name" : "close",
+            "type" : "string",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "open",
+            "type" : "string",
+            "nullable" : true,
+            "metadata" : { }
+          } ]
+        },
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Tuesday",
+        "type" : {
+          "type" : "struct",
+          "fields" : [ {
+            "name" : "close",
+            "type" : "string",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "open",
+            "type" : "string",
+            "nullable" : true,
+            "metadata" : { }
+          } ]
+        },
+        "nullable" : true,
+        "metadata" : { }
+      }, {
+        "name" : "Wednesday",
+        "type" : {
+          "type" : "struct",
+          "fields" : [ {
+            "name" : "close",
+            "type" : "string",
+            "nullable" : true,
+            "metadata" : { }
+          }, {
+            "name" : "open",
+            "type" : "string",
+            "nullable" : true,
+            "metadata" : { }
+          } ]
+        },
+        "nullable" : true,
+        "metadata" : { }
+      } ]
+    },
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "latitude",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "longitude",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "name",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "neighborhoods",
+    "type" : {
+      "type" : "array",
+      "elementType" : "string",
+      "containsNull" : true
+    },
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "open",
+    "type" : "boolean",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "review_count",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "stars",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "state",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "type",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  } ]
+}
