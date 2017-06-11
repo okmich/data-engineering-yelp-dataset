@@ -1,0 +1,14 @@
+-- to create a hbase table
+create 'business', 'att'
+
+-- to list all tables in hbase
+list
+
+-- to scan a table
+scan 'business'
+
+-- to check the number of rows in a table
+count 'business'
+
+-- to delete all rows form table (truncate)
+truncate 'business'
