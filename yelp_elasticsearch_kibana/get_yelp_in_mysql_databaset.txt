@@ -1,0 +1,19 @@
+TO INSTALL MYSQL IN WINDOWS
+===============================
+Go to https://dev.mysql.com/downloads/mysql/ to download Mysql installer.
+
+
+TO INSTALL IN A SANDBOX SANDBOX
+===================================
+There is no need to install mysql server as the sandbox comes pre-installed in sandbox hadoop distributions like the cloudera quickstart vm or Hortonworks sandbox.
+
+
+TO DOWNLOAD AND INSTALL THE YELP DATASET INTO MYSQL SERVER
+=========================================
+Follow in the instructions in the page https://www.yelp.com/dataset/documentation/sql
+However from the instruction in the page, note that between Steps 3 and 4, untar the downloaded tar file (yelp_sql.tar), after which you will extract the untarred file (yelp_sql) to get a yelp_sql.sql file. 
+
+
+also install a yelp user for the database
+================================
+grant all on yelp_db.* to 'yelp'@'%' identified by 'password';

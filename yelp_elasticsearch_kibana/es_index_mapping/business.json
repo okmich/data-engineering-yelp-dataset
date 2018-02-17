@@ -1,0 +1,64 @@
+{
+  "yelp-biz": {
+    "aliases": {},
+    "mappings": {
+      "business": {
+        "properties": {
+          "address": {
+            "type": "text"
+          },
+          "business_hours": {
+            "properties": {
+              "day": {
+                "type": "keyword"
+              },
+              "times": {
+                "type": "keyword"
+              }
+            }
+          },
+          "categories": {
+            "type": "keyword"
+          },
+          "city": {
+            "type": "keyword"
+          },
+          "id": {
+            "type": "text",
+            "index": false
+          },
+          "is_open": {
+            "type": "boolean"
+          },
+          "geo_location": {
+            "type": "geo_point"
+          },
+          "name": {
+            "type": "text"
+          },
+          "neighborhood": {
+            "type": "keyword"
+          },
+          "postal_code": {
+            "type": "keyword"
+          },
+          "review_count": {
+            "type": "long"
+          },
+          "stars": {
+            "type": "float"
+          },
+          "state": {
+            "type": "keyword"
+          }
+        }
+      }
+    },
+    "settings": {
+      "index": {
+        "number_of_shards": "5",
+        "number_of_replicas": "1"
+      }
+    }
+  }
+}

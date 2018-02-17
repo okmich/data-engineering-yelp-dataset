@@ -1,0 +1,10 @@
+spark-shell --packages org.elasticsearch:elasticsearch-spark-13_2.10:6.1.1
+
+libraryDependencies += "org.elasticsearch" %% "elasticsearch-spark-13_2.10" % "6.1.1"
+
+
+spark-shell --packages mysql:mysql-connector-java:5.1.44,org.elasticsearch:elasticsearch-spark-13_2.10:6.1.1 --conf spark.es.index.auto.create=true --conf spark.es.nodes=192.168.8.105:9200
+
+
+
+import org.elasticsearch.spark._   
