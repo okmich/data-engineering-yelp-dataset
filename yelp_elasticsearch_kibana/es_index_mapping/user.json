@@ -1,0 +1,72 @@
+{
+    "mappings": {
+        "user": {
+            "properties": {
+                "average_stars": {
+                    "type": "float"
+                },
+                "compliment_cool": {
+                    "type": "integer"
+                },
+                "compliment_cute": {
+                    "type": "integer"
+                },
+                "compliment_funny": {
+                    "type": "integer"
+                },
+                "compliment_hot": {
+                    "type": "integer"
+                },
+                "compliment_list": {
+                    "type": "integer"
+                },
+                "compliment_more": {
+                    "type": "integer"
+                },
+                "compliment_note": {
+                    "type": "integer"
+                },
+                "compliment_photos": {
+                    "type": "integer"
+                },
+                "compliment_plain": {
+                    "type": "integer"
+                },
+                "compliment_profile": {
+                    "type": "integer"
+                },
+                "compliment_writer": {
+                    "type": "integer"
+                },
+                "cool": {
+                    "type": "integer"
+                },
+                "create_date": {
+                    "type": "date", "format": "yyyy-MM-dd"
+                },
+                "fans": {
+                    "type": "integer"
+                },
+                "funny": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "text", "index" : false
+                },
+                "name": {
+                    "type": "text", "index" : true
+                },
+                "review_count": {
+                    "type": "integer"
+                },
+                "useful": {
+                    "type": "integer"
+                }
+            }
+        }
+    },   
+    "settings": {
+        "number_of_shards": "5",
+        "number_of_replicas": "1"
+    }
+}

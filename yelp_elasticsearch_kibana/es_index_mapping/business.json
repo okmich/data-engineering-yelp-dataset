@@ -1,64 +1,66 @@
 {
-  "yelp-biz": {
-    "aliases": {},
     "mappings": {
-      "business": {
-        "properties": {
-          "address": {
-            "type": "text"
-          },
-          "business_hours": {
+        "business": {
             "properties": {
-              "day": {
-                "type": "keyword"
-              },
-              "times": {
-                "type": "keyword"
-              }
+                "address": { "type": "text", "analyzer": "snowball" },
+                "business_hours": {
+                    "properties": {
+                        "close": {
+                            "type": "keyword"
+                        },
+                        "open": {
+                            "type": "keyword"
+                        },
+                        "day": {
+                            "type": "keyword",
+                            "fields": {
+                                "raw": {
+                                    "type": "text"
+                                }
+                            }
+                        }
+                    }
+                },
+                "categories": {
+                    "type": "keyword",
+                    "fields": {
+                        "searchable": {
+                            "type": "text"
+                        }
+                    }
+                },
+                "city": {
+                    "type": "keyword"
+                },
+                "geo_location": {
+                    "type": "geo_point"
+                },
+                "id": {
+                    "type": "text",
+                    "index": false
+                },
+                "is_open": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "text"
+                },
+                "neighborhood": {
+                    "type": "keyword"
+                },
+                "postal_code": {
+                    "type": "keyword"
+                },
+                "review_count": {
+                    "type": "integer"
+                },
+                "stars": {
+                    "type": "float"
+                },
+                "state": {
+                    "type": "keyword"
+                }
             }
-          },
-          "categories": {
-            "type": "keyword"
-          },
-          "city": {
-            "type": "keyword"
-          },
-          "id": {
-            "type": "text",
-            "index": false
-          },
-          "is_open": {
-            "type": "boolean"
-          },
-          "geo_location": {
-            "type": "geo_point"
-          },
-          "name": {
-            "type": "text"
-          },
-          "neighborhood": {
-            "type": "keyword"
-          },
-          "postal_code": {
-            "type": "keyword"
-          },
-          "review_count": {
-            "type": "long"
-          },
-          "stars": {
-            "type": "float"
-          },
-          "state": {
-            "type": "keyword"
-          }
         }
-      }
-    },
-    "settings": {
-      "index": {
-        "number_of_shards": "5",
-        "number_of_replicas": "1"
-      }
     }
-  }
 }

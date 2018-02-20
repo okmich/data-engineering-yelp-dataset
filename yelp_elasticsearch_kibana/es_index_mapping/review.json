@@ -1,0 +1,75 @@
+{
+    "mappings": {
+        "review": {
+            "properties": {
+                "address": {
+                    "type": "text", "analyzer" : "snowball" 
+                },
+                "biz_stars": {
+                    "type": "float"
+                },
+                "business_id": {
+                    "type": "text", "index" : false
+                },
+                "categories": {
+                    "type": "keyword",
+                    "fields": {
+                        "searchable": {
+                            "type": "text"
+                        }
+                    }
+                },
+                "city": {
+                    "type": "keyword"
+                },
+                "cool": {
+                    "type": "long"
+                },
+                "review_date": {
+                    "type": "date", "format" : "yyyy-MM-dd"
+                },
+                "funny": {
+                    "type": "long"
+                },
+                "geo_location": {
+                    "type": "geo_point"
+                },
+                "id": {
+                    "type": "text",
+                    "index": false
+                },
+                "name": {
+                    "type": "text"
+                },
+                "neighborhood": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "postal_code": {
+                    "type": "keyword"
+                },
+                "stars": {
+                    "type": "long"
+                },
+                "state": {
+                    "type": "keyword"
+                },
+                "text": {
+                    "type": "text"
+                },
+                "useful": {
+                    "type": "long"
+                },
+                "user_id": {
+                    "type": "text", "index" :false
+                }
+            }
+        }
+    }
+    
+}

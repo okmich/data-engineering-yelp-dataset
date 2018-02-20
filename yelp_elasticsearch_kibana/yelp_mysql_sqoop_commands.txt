@@ -1,15 +1,18 @@
 
 # using sqoop to test the connectivity between the guest reading data from the host
-sqoop-eval --connect jdbc:mysql://192.168.2.105/yelp_db --username yelp --password password --query "show tables"
+sqoop-eval --connect jdbc:mysql://192.168.8.105/yelp_db --username yelp --password password --query "show tables"
 
 # import the business table
-sqoop-import --connect jdbc:mysql://192.168.2.105/yelp_db --username yelp --password-file /user/cloudera/passwordfile --table business --target-dir /user/cloudera/yelp/sqoop/business --as-parquetfile --num-mappers 2 --mapreduce-job-name yelp_busines_sqoop_import
+sqoop-import --connect jdbc:mysql://192.168.8.105/yelp_db --username yelp --password-file /user/cloudera/passwordfile --table business --target-dir /user/cloudera/yelp/sqoop/business --as-parquetfile --num-mappers 2 --mapreduce-job-name yelp_busines_sqoop_import
 
 # import the category table
-sqoop-import --connect jdbc:mysql://192.168.2.105/yelp_db --username yelp --password-file /user/cloudera/passwordfile --table category --target-dir /user/cloudera/yelp/sqoop/category --as-parquetfile --num-mappers 1 --mapreduce-job-name yelp_business_category_sqoop_import
+sqoop-import --connect jdbc:mysql://192.168.8.105/yelp_db --username yelp --password-file /user/cloudera/passwordfile --table category --target-dir /user/cloudera/yelp/sqoop/category --as-parquetfile --num-mappers 1 --mapreduce-job-name yelp_business_category_sqoop_import
 
 # import the hours table
-sqoop-import --connect jdbc:mysql://192.168.2.105/yelp_db --username yelp --password-file /user/cloudera/passwordfile --table hours --target-dir /user/cloudera/yelp/sqoop/hours --as-parquetfile --num-mappers 1 --mapreduce-job-name yelp_business_hours_sqoop_import
+sqoop-import --connect jdbc:mysql://192.168.8.105/yelp_db --username yelp --password-file /user/cloudera/passwordfile --table hours --target-dir /user/cloudera/yelp/sqoop/hours --as-parquetfile --num-mappers 1 --mapreduce-job-name yelp_business_hours_sqoop_import
 
 # import the review table
-sqoop-import --connect jdbc:mysql://192.168.2.105/yelp_db --username yelp --password-file /user/cloudera/passwordfile --table review --target-dir /user/cloudera/yelp/sqoop/review --as-parquetfile --num-mappers 5 --mapreduce-job-name yelp_business_review_sqoop_import --compress --compression-codec snappy
+sqoop-import --connect jdbc:mysql://192.168.8.105/yelp_db --username yelp --password-file /user/cloudera/passwordfile --table review --target-dir /user/cloudera/yelp/sqoop/review --as-parquetfile --num-mappers 5 --mapreduce-job-name yelp_business_review_sqoop_import --compress --compression-codec snappy
+
+# import the user table
+sqoop-import --connect jdbc:mysql://192.168.8.105/yelp_db --username yelp --password-file /user/cloudera/passwordfile --table user --target-dir /user/cloudera/yelp/sqoop/user --as-parquetfile --num-mappers 2 --mapreduce-job-name yelp_business_review_sqoop_user
